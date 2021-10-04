@@ -24,9 +24,9 @@ def main():
     dictionary = open("dictionary.txt", "r")
     hashes = open("shadow", "r")
 
-    #Try to hash it without salt
-    # for item in dictionary:
-    #     md5H = md5Hash(item, hashes)
+    # Try to hash it without salt
+    for item in dictionary:
+        md5H = md5Hash(item, hashes)
 
     for item in dictionary:
         sha1H = sha1Hash(item, hashes)
