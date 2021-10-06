@@ -1,0 +1,30 @@
+Nicholas Nguyen
+
+Home smart speakers include products like the Google Home, Amazon Alexa,
+and the Apple Homepod. These products serve as both a bluetooth speaker
+and as a digital personal assistants. They sit idly and listen for their
+activation phrase such as "Hey, Google" or "Siri" at which point they wake up
+for more voice commands.
+
+Two security goals that are crucial for these are confidentiality and
+availibility. Because the speakers essentially have a mic that is always
+on, it's critical that any data sent is properly encrypted. If the data is
+poorly encrypted or not encrypted at all, any man in the middle that can 
+listen in to everything that the mic picks up. Availability is important
+because the benefit to having a smart speaker is that it is always 
+available. If the server the assistant uses is down, then half the 
+functionality of a smart speaker is gone. 
+
+Two potential threats to smart speakers are man-in-the-middle attacks and
+denial of service attacks. With a man-in-the-middle attack, an adversary
+will be able to hear everything that's being said both before and after the 
+assistant is called. Because the speakers are constantly polling to hear their
+activation phrase, they take in everything they hear and send it to a 
+server to process. A man-in-the-middle could theoretically hear everything 
+that's being said near the speaker. Another problem that arises is if the 
+server the speakers rely on goes down. The speakers themselves are not powerful
+enough computers to parse speech and search the internet, so they rely on
+sending information to external servers to do the calculations. If these
+servers go down, the speakers can't do any of their smart functionalities.
+
+Two defences against these threats are encryption and redundency. 
