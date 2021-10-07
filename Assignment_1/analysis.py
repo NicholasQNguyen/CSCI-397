@@ -13,16 +13,20 @@ def main():
                  "m": 0, "n": 0, "o": 0, "p": 0, "q": 0, "r": 0,
                  "s": 0, "t": 0, "u": 0, "v": 0, "w": 0, "x": 0,
                  "y": 0, "z": 0}
-    keyList = []
 
     # http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
-    # A list of all letters put in order of frequency 
+    # A list of all letters put in order of frequency
     # (e is most common then t)
-    letterFreqTable = ["e", "t", "a", "o", "i", "n", "s", "r", "h",
-                       "d", "l", "u", "c", "m", "f", "y", "w", "g",
-                       "p", "b", "v", "k", "x", "q", "j", "z"]
+    realFreqTable = ["e", "t", "a", "o", "i", "n", "s", "r", "h",
+                     "d", "l", "u", "c", "m", "f", "y", "w", "g",
+                     "p", "b", "v", "k", "x", "q", "j", "z", " ",
+                     ".", ","]
+    encryptedFreqTable = []
+    lines = encrypted.readlines()
+    # print(lines)
     # https://stackoverflow.com/questions/1155617/count-the-number-of-occurrences-of-a-character-in-a-string
-    for word in encrypted:
+    # Count number of times each letter appears
+    for word in lines:
         for key in freqTable:
             freqTable[key] += word.count(key)
 
@@ -30,19 +34,23 @@ def main():
         print(key + ":", end="")
         print(freqTable[key])
 
+    # Make a list in order of appearance frequency
     while freqTable != {}:
         highestKey = "a"
         for key in freqTable:
             if freqTable[key] > freqTable[highestKey]:
                 highestKey = key
         
-        keyList.append(highestKey)
-        freqTable.pop(highestKey)
-    print(keyList)
+        encryptedFreqTable.append(highestKey)
+        freqTable.pop(highestKey)   
+
+    encryptedFreqTable.append(" ")
+    encryptedFreqTable.append(".")
+    encryptedFreqTable.append(",")
+    print(encryptedFreqTable)
 
 
-
-
+        
 
 if __name__ == "__main__":
     main()
