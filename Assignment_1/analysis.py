@@ -72,7 +72,40 @@ def main():
     # f <-> s
     manualMap(mappingDict, "f", "s", "v", "d")
 
-    # print(mappingDict)
+    # i <-> g
+    manualMap(mappingDict, "i", "g", "h", "v")
+
+    # u <-> d
+    manualMap(mappingDict, "u", "d", "v", "h")
+
+    # g <-> b
+    manualMap(mappingDict, "g", "b", "e", "f")
+
+    # c <-> t
+    manualMap(mappingDict, "c", "t", "n", "e")
+
+    # j <-> l
+    manualMap(mappingDict, "j", "l", "y", "r")
+
+    # m <-> x
+    manualMap(mappingDict, "m", "x", "b", "q")
+
+    # e <-> k
+    manualMap(mappingDict, "e", "k", "w", "f")
+    
+    # w <-> v
+    manualMap(mappingDict, "w", "v", "h", "f")
+
+    # t <-> f
+    manualMap(mappingDict, "t", "f", "h", "p")
+
+    # p <-> q
+    manualMap(mappingDict, "p", "q", "b", "j")
+
+    # b <-> z
+    manualMap(mappingDict, "b", "z", "a", "j")
+
+    print(mappingDict)
 
     for word in lines:
         for letters in word:
