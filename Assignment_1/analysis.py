@@ -2,6 +2,10 @@
 Program to crack encrypted.txt
 """
 
+def manualMap(dictionary, letter1, letter2, letter3, letter4):
+    dictionary[letter1] = letter2
+    dictionary[letter3] = letter4
+
 
 def main():
     encrypted = open("encrypted.txt", "r")
@@ -20,9 +24,10 @@ def main():
     realFreqTable = ["e", "t", "a", "o", "i", "n", "s", "r", "h",
                      "d", "l", "u", "c", "m", "f", "y", "w", "g",
                      "p", "b", "v", "k", "x", "q", "j", "z", " ",
-                     ".", ","]
+                     ",", "."]
     encryptedFreqTable = []
     lines = encrypted.readlines()
+    deciphered = []
     # print(lines)
     # https://stackoverflow.com/questions/1155617/count-the-number-of-occurrences-of-a-character-in-a-string
     # Count number of times each letter appears
@@ -30,9 +35,9 @@ def main():
         for key in freqTable:
             freqTable[key] += word.count(key)
 
-    for key in freqTable:
-        print(key + ":", end="")
-        print(freqTable[key])
+    # for key in freqTable:
+    #     print(key + ":", end="")
+    #     print(freqTable[key])
 
     # Make a list in order of appearance frequency
     while freqTable != {}:
@@ -47,10 +52,38 @@ def main():
     encryptedFreqTable.append(" ")
     encryptedFreqTable.append(".")
     encryptedFreqTable.append(",")
-    print(encryptedFreqTable)
+    # print(encryptedFreqTable)
+    # print(realFreqTable)
 
+    # TODO Make a dictionary mapping the encrypted freq table to the real one
+    # https://www.geeksforgeeks.org/python-convert-two-lists-into-a-dictionary/
 
+    mappingDict = {}
+    for key in encryptedFreqTable:
+        for value in realFreqTable:
+            mappingDict[key] = value
+            realFreqTable.remove(value)
+            break  
         
+    # Manual swapping 
+    # d <-> i
+    manualMap(mappingDict, "d", "i", "z", "o")
+
+    # f <-> s
+    manualMap(mappingDict, "f", "s", "v", "d")
+
+    # print(mappingDict)
+
+    for word in lines:
+        for letters in word:
+            # print(letters, end =" ")
+            print(mappingDict[letters], end = "")
+            deciphered.append(mappingDict[letters])
+    
+    # print(deciphered)
+    print("\n")
+    print(lines)
+    
 
 if __name__ == "__main__":
     main()
