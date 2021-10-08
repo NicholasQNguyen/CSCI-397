@@ -16,6 +16,12 @@ def main():
     for hash in shadowHashes:
         print(hash)
 
+    #Go through the lines of the dictionary
+        #hash the line
+            #go through the lines of shadowHashes
+                #Compare the hash we calculated to each of the shadowHashes
+                    #If we get a match, print out line
+
     #https://www.geeksforgeeks.org/md5-hash-python/
     ## print(hashlib.md5(b"Nicholas").digest())
     for i in range(100000):
