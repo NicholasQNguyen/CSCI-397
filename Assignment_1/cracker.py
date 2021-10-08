@@ -3,37 +3,19 @@ Program to crack hashed passwords from shadow.txt using dictionary.txt
 """
 import hashlib
 
-def md5Hash(plainPassword, listOfHashes):
-    # print(plainPassword)
-    hashedPassword = hashlib.md5(plainPassword.encode()).digest()
-    print(hashedPassword)
-    for hash in listOfHashes:
-        #slice so that we get rid of the user1:
-        hash = hash[6:]
-
-
-
-def sha1Hash(plainPassword, listOfHashes):
-        hashedPassword = hashlib.sha1(plainPassword.encode()).digest()
-        for hash in listOfHashes:
-            hash = hash[6:]
-            if hashedPassword == hash:
-                return hash
-
 def main():
     dictionary = open("dictionary.txt", "r")
-    hashes = open("shadow", "r")
+    shadow = open("shadow", "r")
 
-    # Try to hash it without salt
-    for item in dictionary:
-        md5H = md5Hash(item, hashes)
+    shadowHashes = []
 
-    # for item in dictionary:
-    #     sha1H = sha1Hash(item, hashes)
-    
-    # print(md5H)
-    # print(sha1H)
-            
+    # Create a list of just the hashes w/o the user#: and \n
+    for line in shadow:
+        shadowHashes.append(line[6:].strip())
+
+    for hash in shadowHashes:
+        print(hash)
+
     #https://www.geeksforgeeks.org/md5-hash-python/
     ## print(hashlib.md5(b"Nicholas").digest())
     for i in range(100000):
