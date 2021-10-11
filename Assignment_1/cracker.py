@@ -1,18 +1,19 @@
 """
+Author: Nicholas Nguyen
+File: cracker.py
 Program to crack hashed passwords from shadow.txt using dictionary.txt
+Worked with Will Xue
 """
 import hashlib
-from hashlib import blake2b
+
 
 def main():
+    # Open up our files
     dictionary = open("dictionary.txt", "r")
     passwords = open("password,txt", "w")
     shadow = open("shadow", "r")
 
     shadowHashes = []
-
-    # https://docs.python.org/3/library/hashlib.html
-    m = hashlib.md5()
 
     # Create a list of just the hashes w/o the user#: and \n
     for line in shadow:
@@ -20,13 +21,12 @@ def main():
 
     # for hash in shadowHashes:
     #     print(hash)
-
     #Go through the lines of the dictionary
     for line in dictionary:
         encodedLine = line.encode()
-        hashedLine = hashlib.sha256(encodedLine).hexdigest()
-        #hash the line
+        hashedLine = hashlib.md5(encodedLine).hexdigest()
         # print(hashedLine)
+        # hash the line
         #go through the lines of shadowHashes
         for hashes in shadowHashes:
             # print(hashes)
@@ -38,7 +38,13 @@ def main():
     for i in range(100000):
         #try to hash it with every salt 1-99999
         #append i onto the string we'll hash
-        None
+        for line in dictionary:
+            encodedLine = line.append(i).encode()
+            hashedLine = hashlib.md5(encodedLine).hexdigest()
+            for hashes in shadowHashes:
+                if hashedLine == hashes:
+                    print(line)
+
 
 if __name__ == "__main__":
     main()

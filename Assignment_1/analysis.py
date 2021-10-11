@@ -3,6 +3,7 @@ Author: Nicholas Nguyen
 File: analysis.py
 
 Program to crack encrypted.txt
+Worked with Nobel Manaye
 """
 
 
