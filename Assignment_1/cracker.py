@@ -10,7 +10,7 @@ import hashlib
 def main():
     # Open up our files
     dictionary = open("dictionary.txt", "r")
-    passwords = open("password,txt", "w")
+    passwords = open("password.txt", "w")
     shadow = open("shadow", "r")
 
     shadowHashes = []
