@@ -2,7 +2,7 @@
 Author: Nicholas Nguyen
 File: cracker.py
 Program to crack hashed passwords from shadow.txt using dictionary.txt
-Worked with Will Xue
+Worked with Will Xue and Nobel Manaye
 """
 import hashlib
 
@@ -56,33 +56,6 @@ def main():
     for line in dictionaryPasswords:
         # Hash the line
         encodedLine = line[:len(line) - 1].encode()
-        hashedLine = hashlib.sha1(encodedLine).hexdigest()
-        # print(hashedLine)
-        # go through the hashes in shadowHashes
-        for hashes in shadowHashes:
-            # print(hashes)
-            # Compare the hash we calculated to each of the shadowHashes
-            if hashedLine == hashes:
-                # If we get a match, print out line and write it to the file
-                print(line)
-                passwords.write(line)
-
-    for i in range(100000):
-        # try to hash it with every salt 0-99999
-        # append i onto the string we'll hash
-        for line in dictionaryPasswords:
-            saltedLine = line[:len(line) - 1] + str(i)
-            encodedLine = (saltedLine).encode()
-            hashedLine = hashlib.sha1(encodedLine).hexdigest()
-            for hashes in shadowHashes:
-                if hashedLine == hashes:
-                    print(line)
-                    passwords.write(line)
-
-        # Go through the lines of the dictionary
-    for line in dictionaryPasswords:
-        # Hash the line
-        encodedLine = line[:len(line) - 1].encode()
         hashedLine = hashlib.sha256(encodedLine).hexdigest()
         # print(hashedLine)
         # go through the hashes in shadowHashes
@@ -101,6 +74,33 @@ def main():
             saltedLine = line[:len(line) - 1] + str(i)
             encodedLine = (saltedLine).encode()
             hashedLine = hashlib.sha256(encodedLine).hexdigest()
+            for hashes in shadowHashes:
+                if hashedLine == hashes:
+                    print(line)
+                    passwords.write(line)
+
+        # Go through the lines of the dictionary
+    for line in dictionaryPasswords:
+        # Hash the line
+        encodedLine = line[:len(line) - 1].encode()
+        hashedLine = hashlib.sha512(encodedLine).hexdigest()
+        # print(hashedLine)
+        # go through the hashes in shadowHashes
+        for hashes in shadowHashes:
+            # print(hashes)
+            # Compare the hash we calculated to each of the shadowHashes
+            if hashedLine == hashes:
+                # If we get a match, print out line and write it to the file
+                print(line)
+                passwords.write(line)
+
+    for i in range(100000):
+        # try to hash it with every salt 0-99999
+        # append i onto the string we'll hash
+        for line in dictionaryPasswords:
+            saltedLine = line[:len(line) - 1] + str(i)
+            encodedLine = (saltedLine).encode()
+            hashedLine = hashlib.sha512(encodedLine).hexdigest()
             for hashes in shadowHashes:
                 if hashedLine == hashes:
                     print(line)
