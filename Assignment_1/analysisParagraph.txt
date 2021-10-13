@@ -1,0 +1,15 @@
+My plan was to figure out the frequency of the letters in the ciphertext,
+create a dictionary that mapped the frequencies of the ciphertext to real
+life frequencies. Then, do any manual subsitutions since it won't be perfect.
+
+Sources:
+For the real world frequencies:
+http://pi.math.cornell.edu/~mec/2003-2004/cryptography/subs/frequencies.html
+
+For finding out how to count the numbers of occurances of a letter in the ciphertext:
+https://stackoverflow.com/questions/1155617/count-the-number-of-occurrences-of-a-character-in-a-string
+
+For combining the ciphertext frequency list and the real frequency list into a dictionary:
+https://www.geeksforgeeks.org/python-convert-two-lists-into-a-dictionary/
+
+
