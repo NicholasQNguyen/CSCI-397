@@ -17,6 +17,7 @@ def main(interface="wlp2s0", hostnames="hostnames"):
     # https://www.binarytides.com/python-packet-sniffer-code-linux/
     s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_TCP)
 
+
     # while True:
     # receive a packet from port 53 b/c that's the UDP/DNS port
     packet = s.recvfrom(53)
@@ -30,6 +31,17 @@ def main(interface="wlp2s0", hostnames="hostnames"):
     print(dns_query)
 
     return None
+
+    while True:
+        # receive a packet from port 53 b/c that's the UDP/DNS port
+        packet = s.recvfrom(53)
+
+        print(packet)
+    # https://0xbharath.github.io/art-of-packet-crafting-with-scapy/scapy/creating_packets/index.html
+    # dns_query = IP(dst="8.8.8.8")/UDP(dport=53)/\
+    #     DNS(rd=1, qd=DNSQR(qname="null.co.in"))
+    # dnsResponse = IP(NAME)
+    # return None
 
 
 if __name__ == "__main__":
