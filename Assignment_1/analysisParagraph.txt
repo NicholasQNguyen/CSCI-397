@@ -1,6 +1,7 @@
 My plan was to figure out the frequency of the letters in the ciphertext,
 create a dictionary that mapped the frequencies of the ciphertext to real
-life frequencies. Then, do any manual subsitutions since it won't be perfect.
+life frequencies. From there, swap corresponding letters with their real life
+equivalent. Then, do any manual subsitutions needed since it won't be perfect.
 
 Sources:
 For the real world frequencies:

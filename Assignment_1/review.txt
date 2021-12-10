@@ -27,4 +27,14 @@ enough computers to parse speech and search the internet, so they rely on
 sending information to external servers to do the calculations. If these
 servers go down, the speakers can't do any of their smart functionalities.
 
-Two defences against these threats are encryption and redundency. 
+Two defences against these threats are encryption and redundency. Encryption
+is important because is a man in the middle does get access to the voice clips
+as they go across the internet, they can not actually open it up and listen in.
+Redundency will help prevent denial of service attacks because by haviing 
+multiple servers all handling the same processing, if one of them goes down,
+the others are still up and available to help.
+
+Smart speakers are a fascinating new technology with a lot of potential. 
+However, their listening nature leads to huge privacy and reliabilty concerns.
+However, through careful security measures, the potential of these devices can
+be fully reached.
