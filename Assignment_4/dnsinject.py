@@ -20,6 +20,8 @@ def main(interface="wlp2s0", hostnames="hostnames"):
     
     # https://www.w3schools.com/python/python_file_open.asp
     f = open(hostnames, "r")
+    for word in f:
+        print(word)
     
     print("Working...")
         # https://www.geeksforgeeks.org/packet-sniffing-using-scapy/
